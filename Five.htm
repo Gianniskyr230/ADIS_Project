@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Επιχειρηματική Ανάλυση</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+    body {
+      font-family: 'Segoe UI';
+      margin: 0;
+      background: #f9fafb;
+      color: #333;
+    }
+
+    header {
+      background: #406882;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 4px solid #2c3e50;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    .contentUn {
+      width: 92%;
+      max-width: 1200px;
+      margin: 30px auto;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      border-left: 5px solid #406882;
+      padding-left: 10px;
+      font-size: 24px;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      background: #e0e0e0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-left: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background: #f0f0f0;
+      font-weight: 600;
+    }
+
+    .chart {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    #ProfitGoals label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    #ProfitGoals input, #ProfitGoals select {
+      padding: 6px 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    #GoalsTable li {
+      padding: 10px;
+      background: #ffffff;
+      border-left: 4px solid #406882;
+      margin-bottom: 6px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ανάλυση Δεδομένων Επιχείρησης</h1>
+  </header>
+
+  <div class="contentUn">
+
+    <section>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>Κέρδη Επιχείρησης</h2>
+        <button class="btn">Ημερομηνία</button>
+      </div>
+      <div class="chart">
+        <canvas id="profitChart"></canvas>
+      </div>
+    </section>
+
+    <section>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>Πίνακας Προϊόντων</h2>
+        <button class="btn">Ημερομηνία</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Κωδικός</th>
+            <th>Κατηγορία</th>
+            <th>Περιγραφή</th>
+            <th>Συνολικά Έσοδα</th>
+            <th>Συνολικά Έξοδα</th>
+            <th>Συνολικό Κέρδος</th>
+            <th>Τιμή Τεμαχίου</th>
+            <th>Προμηθευτής</th>
+            <th>Περίοδος Δημοφιλίας</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>Ξύλο</td>
+            <td>Δρυς premium</td>
+            <td>20.000€</td>
+            <td>12.000€</td>
+            <td>8,000€</td>
+            <td>50€</td>
+            <td>ΞΥΛΟΕΜΠΟΡΙΚΗ Α.Ε.</td>
+            <td>Ιαν - Μαρ</td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Ξύλο</td>
+            <td>Πεύκο οικολογικό</td>
+            <td>15.000€</td>
+            <td>9.000€</td>
+            <td>6.000€</td>
+            <td>30€</td>
+            <td>ΞΥΛΑ Α.Β.Ε.Ε.</td>
+            <td>Απρ - Ιουν</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Στόχοι Κερδών</h2>
+
+      <form id="ProfitGoals">
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <div>
+            <label for="goal-type">Τύπος Στόχου:</label>
+            <select id="goal-type">
+              <option value="επιχείρηση">Επιχείρηση</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="goal-amount">Στόχος Κερδών:</label>
+            <input type="number" id="goal-amount" required>
+          </div>
+
+          <div>
+            <label for="goal-period">Περίοδος:</label>
+            <select id="goal-period">
+              <option value="Εξάμηνο">Εξάμηνο</option>
+              <option value="Έτος">Έτος</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn">Ορισμός Στόχου</button>
+        </div>
+      </form>
+
+      <div id="goal-list" style="margin-top: 20px;">
+        <h3>Καταχωρημένοι Στόχοι:</h3>
+        <ul id="#GoalsTable"></ul>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Κωδικός Στόχου</th>
+            <th>Επιθυμητά Κέρδη</th>
+            <th>Προθεσμία</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>20.000€</td>
+            <td>5/12/2025</td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>60.000€</td>
+            <td>5/6/2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('profitChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαϊ', 'Ιουν'],
+        datasets: [{
+          label: 'Κέρδη',
+          data: [12000, 15000, 11000, 17000, 16000, 19000],
+          borderColor: 'rgba(46, 204, 113, 1)',
+          backgroundColor: 'rgba(46, 204, 113, 0.2)',
+          tension: 0.4,
+          pointRadius: 5,
+          fill: true    
+        }]
+      },  
+    });
+  </script>
+</body>
+</html>
+
+  
+ 
+ 

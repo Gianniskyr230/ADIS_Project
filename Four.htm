@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Τμήμα Προμηθειών (Διαχειριση Παραγγελιας)</title>
+  <style>
+     body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    .checkbox {
+      text-align: center;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #ecf0f1;
+    }
+
+    h2 {
+      color: #2c3e50;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    header {
+      background: #406882;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 4px solid #2c3e50;
+      margin:0;
+    }
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Τμήμα Προμηθειών (Διαχειριση Παραγγελιας)</h1>
+      </header>
+    <h2>Ήδη Υπάρχουσες Παραγγελίες</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Κωδικός Παραγγελίας</th>
+        <th>Κατηγορία</th>
+        <th>Εύρος Κωδικών</th>
+        <th>Ποσότητα</th>
+        <th>Κόστος ανά τεμάχιο (€)</th>
+        <th>Συνολικό Κόστος (€)</th>
+        <th>Αναμενόμενη Ημερομηνία Παράδοσης</th>
+        <th>Επιβεβαίωση Παράδοσης</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>#1001</td>
+        <td>Ξυλεία</td>
+        <td>001-050</td>
+        <td>50</td>
+        <td>70</td>
+        <td>3.500</td>
+        <td>05/05/2025</td>
+        <td class="checkbox"><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>#1002</td>
+        <td>Πλάκες MDF</td>
+        <td>021-060</td>
+        <td>40</td>
+        <td>50</td>
+        <td>2.000</td>
+        <td>08/05/2025</td>
+        <td class="checkbox"><input type="checkbox"></td>
+      </tr>
+    </tbody>
+  </table>

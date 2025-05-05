@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Τμήμα Πωλήσεων - Αναζήτηση Προϊόντων</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .sidebar button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      background: #34495e;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .content h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+    }
+
+    th {
+      background: #ecf0f1;
+    }
+
+    .order input[type="number"] {
+      width: 60px;
+      padding: 4px;
+      margin-right: 8px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+
+    .order button {
+      background: #da3a0a;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Τμήμα Πωλήσεων</h2>
+    <button>Search Product</button>
+    <button>Scan Product</button>
+  </div>
+
+  <div class="content">
+    <h2>Πινακας Προιοντων</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Κωδικός</th>
+          <th>Κατηγορία</th>
+          <th>Περιγραφή</th>
+          <th>Διαστάσεις</th>
+          <th>Τιμή Τεμαχίου</th>
+          <th>Διαθεσιμότητα</th>
+          <th>Ενέργειες</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>XYL-001</td>
+          <td>Δρυς</td>
+          <td>Πλακάζ εξωτερικής χρήσης</td>
+          <td>200x15x2.5 cm</td>
+          <td>20€</td>
+          <td>15</td>
+          <td>
+            <div class="order">
+              <input type="number" name="quantity" value="1" min="1">
+              <button type="submit">Παραγγελία</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>XYL-002</td>
+          <td>Πεύκο</td>
+          <td>Δοκάρι εμποτισμένο</td>
+          <td>300x10x10 cm</td>
+          <td>15€</td>
+          <td>35</td>
+          <td>
+            <div class="order">
+              <input type="number" name="quantity" value="1" min="1">
+              <button type="submit">Παραγγελία</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

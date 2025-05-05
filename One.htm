@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>XPRESS XYLEIA - ERP Σύστημα</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background-color: #f5f5f5;
+    }
+
+    .header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 35px 0;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    .header p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ecf0f1;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    input, select {
+      margin: 10px;
+      padding: 12px 20px;
+      width: 220px;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background: #2980b9;
+      color: white;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>XPRESS XYLEIA</h1>
+    <p>Σύστημα ERP - Διαχείριση Επιχείρησης Ξυλείας</p>
+  </div>
+
+  <div class="container">
+    <h2>Είσοδος Χρήστη</h2>
+
+    <form id="loginForm">
+      <input type="text" id="usern" name="usern" placeholder="Όνομα χρήστη" required><br>
+      <input type="password" id="pass" name="pass" placeholder="Κωδικός" required><br>
+
+      <select id="role" name="role">
+        <option value="" disabled selected>Επιλογή ρόλου</option>
+        <option value="Three.htm">Τμήμα Προμηθειών (Πραγματοποιηση παραγγελιας)</option>
+        <option value="Four.htm">Τμήμα Προμηθειών (Διαχειριση Παραγγελιας)</option>
+        <option value="Five.htm">Διευθυντής - Γραμματεία</option>
+        <option value="Two.htm">Τμήμα Πωλήσεων</option>
+        <option value="">Διαχειριστής</option>
+      </select><br>
+
+      <input type="submit" value="Σύνδεση">
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const role = document.getElementById("role").value;
+      if (role) {
+        window.location.href = role;
+      } 
+    });
+  </script>
+
+</body>
+</html>

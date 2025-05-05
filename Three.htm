@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Τμήμα Προμηθειών (Πραγματοποιηση παραγγελιας)</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #ecf0f1;
+    }
+
+    input, select, button {
+      padding: 8px;
+      margin: 5px 0;
+      width: 100%;
+    }
+
+    .form {
+      margin-bottom: 40px;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+
+    .btn {
+      background: #e01e1e;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .checkbox {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Τμήμα Προμηθειών (Πραγματοποιηση παραγγελιας)</h1>
+
+  <h2>Προμηθευτές</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Όνομα</th>
+        <th>Διεύθυνση</th>
+        <th>Τηλέφωνο</th>
+        <th>Email</th>
+        <th>Κατάλογος Προϊόντων</th>
+        <th>Προτεινόμενα Προϊόντα</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ΞΥΛΟΕΜΠΟΡΙΚΗ Α.Ε.</td>
+        <td>Αθηνάς 12, Αθήνα</td>
+        <td>2101234567</td>
+        <td>xilo@company.gr</td>
+        <td>Ξύλο Δρυός, Πεύκου, Καρυδιάς</td>
+        <td>Ξύλο Δρυός</td>
+      </tr>
+      <tr>
+        <td>ΞΥΛΑ Α.Β.Ε.Ε.</td>
+        <td>Εγνατίας 45, Θεσσαλονίκη</td>
+        <td>2310765432</td>
+        <td>info@xyla.gr</td>
+        <td>Ξύλο Σφενδάμου, Πεύκου</td>
+        <td>Ξύλο Πεύκου</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="form">
+    <h2>Κάνε Παραγγελία</h2>
+    <form id="orderForm">
+      <label>Προϊόν:</label>
+      <select id="product">
+        <option value="Ξύλο Δρυός">Ξύλο Δρυός</option>
+        <option value="Ξύλο Πεύκου">Ξύλο Πεύκου</option>
+        <option value="Ξύλο Καρυδιάς">Ξύλο Καρυδιάς</option>
+        <option value="Ξύλο Σφενδάμου">Ξύλο Σφενδάμου</option>
+      </select>
+
+      <label>Προμηθευτής:</label>
+      <select id="supplier">
+        <option value="ΞΥΛΟΕΜΠΟΡΙΚΗ Α.Ε.">ΞΥΛΟΕΜΠΟΡΙΚΗ Α.Ε.</option>
+        <option value="ΞΥΛΑ Α.Β.Ε.Ε.">ΞΥΛΑ Α.Β.Ε.Ε.</option>
+      </select>
+
+      <label>Ποσότητα:</label>
+      <input type="number" id="quantity" min="1" required>
+
+      <label>Συμπερίληψη Barcode:</label>
+      <select id="barcode">
+        <option value="Ναι">Ναι</option>
+        <option value="Όχι">Όχι</option>
+      </select>
+
+      <label>Τιμη τεμαχιου:</label>
+      <input type="text" id="UnitPrice" readonly>
+
+      <label>Προτεινόμενος Προμηθευτής:</label>
+      <input type="text" id="RecommendedSupplier" readonly>
+
+      <label>Προτεινόμενη Ποσότητα:</label>
+      <input type="text" id="RecommendedQuantity" readonly>
+
+      <button type="submit" class="btn">Καταχώρηση Παραγγελίας</button>
+    </form>
+  </div>
+
+  
+
+  <script>
+    document.getElementById('product').addEventListener('change', function () {
+      const product = this.value;
+      let recommended = '';
+      let quantity = '';
+      let price = '';
+
+      if (product === 'Ξύλο Δρυός') {
+        recommended = 'ΞΥΛΟΕΜΠΟΡΙΚΗ Α.Ε.';
+        quantity = '50 τεμάχια';
+        price = '30'
+      } else if (product === 'Ξύλο Πεύκου') {
+        recommended = 'ΞΥΛΑ Α.Β.Ε.Ε.';
+        quantity = '30 τεμάχια';
+        price = '40'
+      } else if (product === 'Ξύλο Καρυδιάς') {
+        recommended = 'ΞΥΛΟΕΜΠΟΡΙΚΗ Α.Ε.';
+        quantity = '20 τεμάχια';
+        price = '90'
+      } else if (product === 'Ξύλο Σφενδάμου') {
+        recommended = 'ΞΥΛΑ Α.Β.Ε.Ε.';
+        quantity = '15 τεμάχια';
+        price = '100'
+      }
+
+      document.getElementById('RecommendedSupplier').value = recommended;
+      document.getElementById('RecommendedQuantity').value = quantity;
+      document.getElementById('UnitPrice').value = price;
+    });
+  </script>
+
+</body>
+</html>
